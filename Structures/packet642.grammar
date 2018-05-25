@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ufwb version="1.17">
+    <grammar name="BIN grammar 42" start="id:57" author="Ahmet" fileextension="bin">
+        <description>Grammar for BIN files</description>
+        <scripts>
+            <script name="gsdg" type="DataType" id="12">
+                <source language="Python"># custom data type script
+
+def parseByteRange(element, byteView, bitPos, bitLength, results):
+	# this method parses data starting at bitPos, bitLength bits are remaining
+	&quot;&quot;&quot;parseByteRange method&quot;&quot;&quot;
+
+	# create and set new value
+	value = Value()
+	value.setString(&quot;Value of custom element&quot;)
+
+	# how many bytes were processed?
+	processedBytes = 0
+	iteration = 0
+
+	results.addElement(element, processedBytes, iteration, value)
+
+	# return number of processed bytes
+	return processedBytes
+
+def fillByteRange(value, byteArray, bitPos, bitLength):
+	# this method translates edited values back to the file
+	&quot;&quot;&quot;fillByteRange method&quot;&quot;&quot;
+
+	# write an integer back to file
+	# byteArray.writeUnsignedIntBits(highWord, bitPos, bitLength, ENDIAN_BIG)
+</source>
+            </script>
+        </scripts>
+        <structure name="BIN file2" id="57" encoding="ISO_8859-1:1987" endian="little" signed="no">
+            <number name="datalen" id="58" type="integer" length="4"/>
+            <number name="data_id" id="59" type="integer" length="2"/>
+            <number name="3A" id="60" type="integer" length="1"/>
+            <number name="data1len" id="61" type="integer" length="1"/>
+            <binary name="UNKOWN1" id="62" length="3"/>
+            <number name="STATIC" id="63" type="integer" length="3"/>
+            <number name="UNKNOWN2" id="64" type="integer" length="3"/>
+            <number name="POSX" id="65" type="float" length="4" endian="little"/>
+            <number name="0X15" id="66" type="integer" length="1"/>
+            <number name="VARIABLE3" id="67" type="float" length="4" endian="little"/>
+            <number name="0X1D" id="68" type="integer" length="1"/>
+            <number name="VARIABLE4" id="69" type="float" length="4" endian="little"/>
+            <binary name="0x25" id="70" length="1"/>
+            <number name="VARIABLE5" id="71" type="float" length="4" endian="little"/>
+            <binary name="0xBD,0x01" id="72" length="2"/>
+            <number name="TIME" id="73" type="float" length="4"/>
+        </structure>
+    </grammar>
+</ufwb>
